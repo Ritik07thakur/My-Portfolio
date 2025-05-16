@@ -1,8 +1,9 @@
+
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code2 } from 'lucide-react'; // Using Code2 as a placeholder logo
+import { Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -12,21 +13,67 @@ const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
+  { href: '#practice', label: 'Practice' }, // Added Practice link
 ];
 
 const NavigationBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState(navLinks[0]?.href || '');
+
+  const handleScroll = useCallback(() => {
+    // For background change
+    setIsScrolled(window.scrollY > 50);
+
+    // For active link
+    let currentActive = '';
+    const scrollY = window.scrollY;
+    // Offset should ideally be slightly more than navbar height (h-20 is 80px)
+    const detectionOffset = window.innerHeight * 0.4; // Detect when section is about 40% from top of viewport
+
+    for (let i = navLinks.length - 1; i >= 0; i--) {
+      const link = navLinks[i];
+      const section = document.getElementById(link.href.substring(1)); // Remove '#'
+      if (section) {
+        if (section.offsetTop <= scrollY + detectionOffset) {
+          currentActive = link.href;
+          break;
+        }
+      }
+    }
+    
+    // Fallback for top of the page
+    if (scrollY < 50 && navLinks.length > 0) {
+        currentActive = navLinks[0].href;
+    }
+
+    // Fallback for bottom of the page - ensure the last section is active
+    const atBottom = (window.innerHeight + Math.ceil(scrollY)) >= document.body.scrollHeight - 2; // -2 for rounding
+    if (atBottom && navLinks.length > 0) {
+        currentActive = navLinks[navLinks.length -1].href;
+    }
+
+    setActiveSection(currentActive || (navLinks[0]?.href || ''));
+  }, []); // navLinks is stable
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check on mount
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const closeMenuAndScroll = (href: string) => {
+    setIsOpen(false);
+    // Smooth scroll for Next.js Link component is handled by CSS scroll-behavior: smooth
+    // If manual scroll is needed for some reason:
+    // const element = document.querySelector(href);
+    // if (element) {
+    //   element.scrollIntoView({ behavior: 'smooth' });
+    // }
+  };
 
   return (
     <header
@@ -37,7 +84,7 @@ const NavigationBar: React.FC = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="#home" className="flex items-center space-x-2 text-2xl font-bold text-foreground hover:text-primary transition-colors">
+          <Link href="#home" className="flex items-center space-x-2 text-2xl font-bold text-foreground hover:text-primary transition-colors" onClick={() => closeMenuAndScroll('#home')}>
             <Code2 size={28} className="text-primary"/>
             <span>Ritik Thakur</span>
           </Link>
@@ -47,8 +94,11 @@ const NavigationBar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-foreground hover:text-primary transition-colors font-medium",
+                  activeSection === link.href && "text-primary font-semibold"
+                )}
+                onClick={() => closeMenuAndScroll(link.href)}
               >
                 {link.label}
               </Link>
@@ -71,8 +121,11 @@ const NavigationBar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors text-lg"
-                onClick={toggleMenu}
+                className={cn(
+                  "text-foreground hover:text-primary transition-colors text-lg",
+                  activeSection === link.href && "text-primary font-semibold"
+                )}
+                onClick={() => closeMenuAndScroll(link.href)}
               >
                 {link.label}
               </Link>
