@@ -6,7 +6,6 @@ import SectionWrapper from '@/components/portfolio/SectionWrapper';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-// import Link from 'next/link'; // Link component is no longer needed for external links here
 import { Layers, Github, ExternalLink, Wand2, Briefcase, School } from 'lucide-react';
 import {
   Carousel,
@@ -93,7 +92,7 @@ const collegeProjectsData: Project[] = [
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
   <Card className="bg-card/70 backdrop-blur-sm border-foreground/15 shadow-lg overflow-hidden flex flex-col h-full group hover:shadow-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
     <CardHeader className="p-0">
-      <div className="relative w-full h-48 overflow-hidden">
+      <div className="relative w-full h-40 md:h-48 overflow-hidden">
         <Image
           src={project.imageUrl}
           alt={project.title}
