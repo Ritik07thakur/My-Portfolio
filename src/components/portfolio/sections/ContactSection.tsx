@@ -23,7 +23,7 @@ const socialMediaLinks = [
 ];
 
 const ContactSection: React.FC = () => {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -101,25 +101,42 @@ const ContactSection: React.FC = () => {
             <h3 className="text-2xl font-semibold text-primary mb-4">Follow Me</h3>
             <div className="flex space-x-4">
               {socialMediaLinks.map((link) => (
-                <Link key={link.label} href={link.href} passHref legacyBehavior>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.label}
-                    className="text-muted-foreground hover:text-primary transition-transform duration-300 hover:scale-110"
-                  >
-                    <link.icon size={28} />
-                  </a>
-                </Link>
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="text-muted-foreground hover:text-primary transition-transform duration-300 hover:scale-110"
+                >
+                  <link.icon size={28} />
+                </a>
               ))}
             </div>
           </div>
         </motion.div>
       </div>
 
-      <p className="text-center text-xs text-muted-foreground/70 mt-16">
-        © {currentYear} Ritik Thakur. All rights reserved.
-      </p>
+      {/* Footer Section */}
+      <div className="text-center mt-16 pt-8 border-t border-foreground/10">
+        <p className="text-sm text-muted-foreground/80 mb-4">
+          © {currentYear || new Date().getFullYear()} Ritik Thakur. All rights reserved.
+        </p>
+        <div className="flex justify-center space-x-5">
+          {socialMediaLinks.map((link) => (
+            <a
+              key={`${link.label}-footer`}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className="text-muted-foreground hover:text-primary transition-transform duration-300 hover:scale-110"
+            >
+              <link.icon size={24} /> {/* Slightly smaller icons for footer */}
+            </a>
+          ))}
+        </div>
+      </div>
     </SectionWrapper>
   );
 };
