@@ -80,17 +80,17 @@ const tools: Skill[] = [
 ];
 
 const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => (
-  <Card className="bg-card/70 backdrop-blur-sm border-foreground/15 shadow-md hover:shadow-primary/20 hover:border-primary/30 transition-all duration-300 group flex flex-col items-center p-4 text-center h-full">
-    <CardHeader className="p-2">
-      <skill.icon size={40} className="text-primary mb-2 group-hover:scale-110 transition-transform duration-300" />
+  <Card className="bg-card/70 backdrop-blur-sm border-foreground/15 shadow-md hover:shadow-primary/20 hover:border-primary/30 transition-all duration-300 group flex flex-col items-center p-3 sm:p-4 text-center h-full">
+    <CardHeader className="p-1 sm:p-2">
+      <skill.icon className="h-8 w-8 sm:h-10 sm:w-10 text-primary mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300" />
     </CardHeader>
-    <CardContent className="p-2 flex-grow flex flex-col justify-center">
-      <CardTitle className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
+    <CardContent className="p-1 sm:p-2 flex-grow flex flex-col justify-center">
+      <CardTitle className="text-sm sm:text-base md:text-lg font-medium text-foreground group-hover:text-primary transition-colors">
         {skill.name}
       </CardTitle>
       {skill.level && (
-        <div className="w-full mt-2">
-          <Progress value={skill.level} aria-label={`${skill.name} proficiency ${skill.level}%`} className="h-2 [&>div]:bg-primary" />
+        <div className="w-full mt-1 sm:mt-2">
+          <Progress value={skill.level} aria-label={`${skill.name} proficiency ${skill.level}%`} className="h-1.5 sm:h-2 [&>div]:bg-primary" />
           <p className="text-xs text-muted-foreground mt-1">{skill.level}%</p>
         </div>
       )}
@@ -127,9 +127,9 @@ const SkillsSection: React.FC = () => {
   }, [api]);
 
   const skillCategories = [
-    { title: "Frontend Skills", skills: frontendSkills, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" },
-    { title: "Backend Skills", skills: backendSkills, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4" },
-    { title: "Developer Tools", skills: tools, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" },
+    { title: "Frontend Skills", skills: frontendSkills, gridCols: "grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4" },
+    { title: "Backend Skills", skills: backendSkills, gridCols: "grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4" },
+    { title: "Developer Tools", skills: tools, gridCols: "grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5" },
   ];
 
   return (
@@ -144,7 +144,7 @@ const SkillsSection: React.FC = () => {
             {skillCategories.map((category, index) => (
               <CarouselItem key={index} className="flex flex-col items-center">
                 <h3 className="text-2xl font-semibold text-primary mb-6">{category.title}</h3>
-                <div className={`grid ${category.gridCols} gap-4 md:gap-6 w-full px-2`}>
+                <div className={`grid ${category.gridCols} gap-3 sm:gap-4 md:gap-6 w-full px-1 sm:px-2`}>
                   {category.skills.map((skill) => (
                     <SkillCard key={skill.name} skill={skill} />
                   ))}
@@ -152,8 +152,8 @@ const SkillsSection: React.FC = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-[-10px] sm:left-[-16px] md:left-[-24px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
-          <CarouselNext className="right-[-10px] sm:right-[-16px] md:right-[-24px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
+          <CarouselPrevious className="left-[-5px] sm:left-[-10px] md:left-[-16px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
+          <CarouselNext className="right-[-5px] sm:right-[-10px] md:right-[-16px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
         </Carousel>
         { count > 0 && (
           <div className="py-2 text-center text-sm text-muted-foreground mt-4">
@@ -166,3 +166,4 @@ const SkillsSection: React.FC = () => {
 };
 
 export default SkillsSection;
+
