@@ -13,7 +13,7 @@ const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
-  { href: '#practice', label: 'Practice' }, // Added Practice link
+  { href: '#practice', label: 'Practice' }, 
 ];
 
 const NavigationBar: React.FC = () => {
