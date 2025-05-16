@@ -67,7 +67,7 @@ const freelancingProjectsData: Project[] = [
     id: 'medicine-shop',
     title: 'Medicine Shop',
     description: 'Online pharmacy store built for a local business to handle orders and inventory.',
-    imageUrl: 'https://static.vecteezy.com/system/resources/previews/005/815/640/original/medical-shop-logo-template-this-design-use-stethoscope-symbol-suitable-for-bag-and-health-business-free-vector.jpg',
+    imageUrl: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747425399/Screenshot_2025-05-17_012537_iodbcn.png',
     imageHint: 'online pharmacy store',
     liveUrl: 'https://drpharmax.com/',
   },
@@ -85,7 +85,7 @@ const collegeProjectsData: Project[] = [
     id: 'book-store',
     title: 'Book Store',
     description: 'A platform where students can buy and sell second-hand books across the college.',
-    imageUrl: 'https://static.vecteezy.com/system/resources/previews/008/147/482/non_2x/modern-bookstore-logo-design-illustration-vector.jpg',
+    imageUrl: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747425412/Screenshot_2025-05-17_012604_p14nbw.png',
     imageHint: 'online book marketplace',
   },
 ];
@@ -214,4 +214,3 @@ const ProjectsSection: React.FC = () => {
 };
 
 export default ProjectsSection;
-
