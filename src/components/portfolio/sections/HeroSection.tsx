@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowDown, Download, Send } from 'lucide-react';
+import { ArrowDown, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
@@ -77,14 +77,6 @@ const HeroSection: React.FC = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4"
         >
-          <Link href="/resume.pdf" passHref legacyBehavior>
-            <a target="_blank" rel="noopener noreferrer" download>
-              <Button size="lg" variant="default" className="text-lg px-8 py-6 group w-full sm:w-auto">
-                <Download size={20} className="mr-2 group-hover:animate-bounce" />
-                Download Resume
-              </Button>
-            </a>
-          </Link>
           <Link href="#contact">
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 group border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto">
               <Send size={20} className="mr-2 group-hover:translate-x-1 transition-transform" />
