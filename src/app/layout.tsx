@@ -17,20 +17,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Starlight Folio - Ritik Thakur',
-  description: 'Portfolio of Ritik Thakur, a MERN stack and Next.js fullstack developer, showcasing projects and skills in web development.',
-  keywords: ['Ritik Thakur', 'MERN Stack Developer', 'Next.js Developer', 'Fullstack Developer', 'Freelancer', 'Web Developer', 'Portfolio', 'React Developer', 'Node.js Developer'],
+  title: 'Ritik Thakur | MERN Stack Developer',
+  description: "Ritik Thakur's portfolio – MERN Stack and Next.js Developer actively looking for job opportunities. Explore skills, projects, and contact details.",
+  keywords: ['Ritik Thakur', 'MERN Stack Developer', 'Next.js Developer', 'Fullstack Developer', 'Freelancer', 'Web Developer', 'Portfolio', 'React Developer', 'Node.js Developer', 'Job Seeker', 'Open to opportunities'],
   openGraph: {
-    title: 'Starlight Folio - Ritik Thakur',
-    description: 'Portfolio of Ritik Thakur, a MERN stack and Next.js fullstack developer.',
-    url: 'https://your-portfolio-url.com', // IMPORTANT: Update with your actual deployed URL
+    title: 'Ritik Thakur | MERN Stack Developer',
+    description: "Check out Ritik Thakur's portfolio. Fullstack MERN & Next.js developer with experience in building real-world projects and freelancing apps.",
+    url: 'https://ritikthakur.vercel.app',
     siteName: 'Ritik Thakur Portfolio',
     images: [
       {
-        url: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423864/photo_xrtbts.jpg', // Using logo as OG image
-        width: 600, // Adjust if you have a specific OG image size
-        height: 600, // Adjust if you have a specific OG image size
-        alt: 'Ritik Thakur - Portfolio Logo',
+        url: 'https://ritikthakur.vercel.app/og-image.jpg', // Assuming og-image.jpg is in your /public folder
+        width: 1200, // Standard OG image width
+        height: 630, // Standard OG image height
+        alt: 'Ritik Thakur - MERN Stack Developer Portfolio',
       },
     ],
     locale: 'en_US',
@@ -38,12 +38,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Starlight Folio - Ritik Thakur',
-    description: 'Portfolio of Ritik Thakur, a MERN stack and Next.js fullstack developer.',
-    // creator: '@yourTwitterHandle', // Optional: Add your Twitter handle
-    images: ['https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423864/photo_xrtbts.jpg'], // Using logo as Twitter image
+    title: 'Ritik Thakur | MERN Stack Developer',
+    description: 'Portfolio of Ritik Thakur, a fullstack developer skilled in React, Node.js, MongoDB, Express, and Next.js. Open to job opportunities.',
+    // creator: '@yourTwitterHandle', // Optional: Add your Twitter handle if you have one
+    images: ['https://ritikthakur.vercel.app/og-image.jpg'], // Assuming og-image.jpg is in your /public folder
   },
-  // You can also add other metadata fields like 'robots', 'icons', 'manifest' etc.
+  // Viewport is generally handled by Next.js automatically in App Router.
+  // Favicon is also handled by placing favicon.ico in the /app directory root or /public.
+  // We'll rely on Next.js conventions for these.
 };
 
 export default function RootLayout({
@@ -55,10 +57,11 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Ritik Thakur',
-    url: 'https://your-portfolio-url.com', // IMPORTANT: Update with your actual deployed URL
-    image: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423639/WhatsApp_Image_2024-12-10_at_23.06.55_f90f4860_giuptz.jpg', // Profile photo from About section
+    url: 'https://ritikthakur.vercel.app', // Updated URL
+    // Using the more specific profile picture for Person schema, rather than a generic OG image
+    image: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423639/WhatsApp_Image_2024-12-10_at_23.06.55_f90f4860_giuptz.jpg', 
     jobTitle: 'MERN Stack Developer, Freelancer, Quick Learner',
-    description: 'Dedicated Fullstack Developer specializing in the MERN stack and Next.js, passionate about crafting intuitive, high-performance web applications.',
+    description: "Ritik Thakur's portfolio – MERN Stack and Next.js Developer actively looking for job opportunities. Explore skills, projects, and contact details.", // Updated description
     sameAs: [
       'https://github.com/Ritik07thakur',
       'https://www.linkedin.com/in/ritik-thakur-3951502b1/',
