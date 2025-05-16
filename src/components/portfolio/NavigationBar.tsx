@@ -14,7 +14,7 @@ const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
-  { href: '#practice', label: 'Practice' },
+  // { href: '#practice', label: 'Practice' }, // Removed Practice link
 ];
 
 const NavigationBar: React.FC = () => {
