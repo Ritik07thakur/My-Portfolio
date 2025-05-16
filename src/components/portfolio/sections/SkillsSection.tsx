@@ -39,7 +39,7 @@ import {
   ImageUp, // For Cloudinary
   WandSparkles, // For GitHub Copilot
   Code, // Generic for jQuery
-  LucideReact,
+  Atom, // Icon for React
 } from 'lucide-react';
 
 interface Skill {
@@ -52,7 +52,7 @@ const frontendSkills: Skill[] = [
   { name: 'HTML', icon: FileCode2, level: 95 },
   { name: 'CSS', icon: Palette, level: 90 },
   { name: 'JavaScript', icon: Braces, level: 85 },
-  { name: 'React', icon: LucideReact, level: 90 },
+  { name: 'React', icon: Atom, level: 90 },
   { name: 'Next.js', icon: Layers, level: 85 },
   { name: 'jQuery', icon: Code, level: 70 },
   { name: 'Bootstrap', icon: LayoutGrid, level: 80 },
