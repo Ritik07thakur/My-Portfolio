@@ -14,7 +14,7 @@ const AboutSection: React.FC = () => {
           <div className="md:w-1/3 flex-shrink-0">
             <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden shadow-xl border-4 border-primary/50">
               <Image
-                src="https://placehold.co/400x400.png"
+                src="https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423639/WhatsApp_Image_2024-12-10_at_23.06.55_f90f4860_giuptz.jpg"
                 alt="Ritik Thakur"
                 layout="fill"
                 objectFit="cover"
