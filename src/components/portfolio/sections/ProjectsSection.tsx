@@ -6,7 +6,7 @@ import SectionWrapper from '@/components/portfolio/SectionWrapper';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link'; // Link component is no longer needed for external links here
 import { Layers, Github, ExternalLink, Wand2, Briefcase, School } from 'lucide-react';
 import {
   Carousel,
@@ -26,6 +26,25 @@ interface Project {
   liveUrl?: string;
   repoUrl?: string;
 }
+
+const freelancingProjectsData: Project[] = [
+  {
+    id: 'vistra-travel',
+    title: 'Vistra – Tour & Travel',
+    description: 'A tour management site for local adventures and tent bookings in Churdhar.',
+    imageUrl: 'https://tse1.mm.bing.net/th?id=OIP.htLqLJ6XnHbTuPrhnV0v3gHaHa&pid=Api&P=0&h=180',
+    imageHint: 'travel booking website',
+    liveUrl: 'https://churdhar.vercel.app/',
+  },
+  {
+    id: 'medicine-shop',
+    title: 'Medicine Shop',
+    description: 'Online pharmacy store built for a local business to handle orders and inventory.',
+    imageUrl: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747425399/Screenshot_2025-05-17_012537_iodbcn.png',
+    imageHint: 'online pharmacy store',
+    liveUrl: 'https://drpharmax.com/',
+  },
+];
 
 const normalProjectsData: Project[] = [
   {
@@ -51,25 +70,6 @@ const normalProjectsData: Project[] = [
     imageUrl: 'https://tse3.mm.bing.net/th?id=OIP.G4d1nKfnlw8k-z2BPjNbagHaHa&pid=Api&P=0&h=180',
     imageHint: 'blog writing platform',
     repoUrl: 'https://github.com/Ritik07thakur/Full-Stack-Blog-app-main',
-  },
-];
-
-const freelancingProjectsData: Project[] = [
-  {
-    id: 'vistra-travel',
-    title: 'Vistra – Tour & Travel',
-    description: 'A tour management site for local adventures and tent bookings in Churdhar.',
-    imageUrl: 'https://tse1.mm.bing.net/th?id=OIP.htLqLJ6XnHbTuPrhnV0v3gHaHa&pid=Api&P=0&h=180',
-    imageHint: 'travel booking website',
-    liveUrl: 'https://churdhar.vercel.app/',
-  },
-  {
-    id: 'medicine-shop',
-    title: 'Medicine Shop',
-    description: 'Online pharmacy store built for a local business to handle orders and inventory.',
-    imageUrl: 'https://res.cloudinary.com/dewkk3cbk/image/upload/v1747425399/Screenshot_2025-05-17_012537_iodbcn.png',
-    imageHint: 'online pharmacy store',
-    liveUrl: 'https://drpharmax.com/',
   },
 ];
 
@@ -111,22 +111,18 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
     <CardFooter className="p-4 md:p-6 pt-0 mt-auto">
       <div className="flex space-x-3">
         {project.liveUrl && (
-          <Link href={project.liveUrl} passHref legacyBehavior>
-            <a target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <ExternalLink size={16} className="mr-2" /> Live Demo
-              </Button>
-            </a>
-          </Link>
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <ExternalLink size={16} className="mr-2" /> Live Demo
+            </Button>
+          </a>
         )}
         {project.repoUrl && (
-          <Link href={project.repoUrl} passHref legacyBehavior>
-            <a target="_blank" rel="noopener noreferrer">
-              <Button variant="ghost" size="sm" className="text-foreground hover:bg-accent/50 hover:text-accent-foreground">
-                <Github size={16} className="mr-2" /> View Code
-              </Button>
-            </a>
-          </Link>
+          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="sm" className="text-foreground hover:bg-accent/50 hover:text-accent-foreground">
+              <Github size={16} className="mr-2" /> View Code
+            </Button>
+          </a>
         )}
       </div>
     </CardFooter>
@@ -151,6 +147,10 @@ const ProjectCategorySlider: React.FC<ProjectCategorySliderProps> = ({ title, pr
     api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
   }, [api]);
 
+  if (!projects || projects.length === 0) {
+    return null; // Don't render slider if no projects
+  }
+  
   return (
     <div className="mb-12 md:mb-16">
       <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center">
@@ -161,13 +161,13 @@ const ProjectCategorySlider: React.FC<ProjectCategorySliderProps> = ({ title, pr
         <CarouselContent className="-ml-4">
           {projects.map((project) => (
             <CarouselItem key={project.id} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-              <div className="p-1 h-full"> {/* Added padding for better spacing around cards */}
+              <div className="p-1 h-full"> 
                 <ProjectCard project={project} />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        {projects.length > 1 && ( // Show arrows only if there's more than one project
+        {projects.length > 1 && ( 
           <>
             <CarouselPrevious className="left-[-10px] sm:left-[-16px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
             <CarouselNext className="right-[-10px] sm:right-[-16px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />

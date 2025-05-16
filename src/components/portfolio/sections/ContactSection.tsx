@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import SectionWrapper from '@/components/portfolio/SectionWrapper';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -22,6 +23,12 @@ const socialMediaLinks = [
 ];
 
 const ContactSection: React.FC = () => {
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Basic form submission alert.
@@ -111,7 +118,7 @@ const ContactSection: React.FC = () => {
       </div>
 
       <p className="text-center text-xs text-muted-foreground/70 mt-16">
-        © {new Date().getFullYear()} Ritik Thakur. All rights reserved.
+        © {currentYear} Ritik Thakur. All rights reserved.
       </p>
     </SectionWrapper>
   );
