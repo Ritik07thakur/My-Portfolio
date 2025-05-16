@@ -192,15 +192,15 @@ const ProjectsSection: React.FC = () => {
       </h2>
       
       <ProjectCategorySlider 
-        title="Personal & Learning Projects" 
-        projects={normalProjectsData}
-        icon={Wand2} 
-      />
-      
-      <ProjectCategorySlider 
         title="Freelancing Projects" 
         projects={freelancingProjectsData}
         icon={Briefcase} 
+      />
+
+      <ProjectCategorySlider 
+        title="Personal & Learning Projects" 
+        projects={normalProjectsData}
+        icon={Wand2} 
       />
       
       <ProjectCategorySlider 
