@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Layers, Github, ExternalLink, Wand2, Briefcase, School } from 'lucide-react'; // Added Briefcase and School
+import { Layers, Github, ExternalLink, Wand2, Briefcase, School } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -59,7 +59,7 @@ const freelancingProjectsData: Project[] = [
     id: 'vistra-travel',
     title: 'Vistra – Tour & Travel',
     description: 'A tour management site for local adventures and tent bookings in Churdhar.',
-    imageUrl: 'https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Travel-logo-design-Graphics-9786083-1-1-580x435.jpg',
+    imageUrl: 'https://tse1.mm.bing.net/th?id=OIP.htLqLJ6XnHbTuPrhnV0v3gHaHa&pid=Api&P=0&h=180',
     imageHint: 'travel booking website',
     liveUrl: 'https://churdhar.vercel.app/',
   },
@@ -67,7 +67,7 @@ const freelancingProjectsData: Project[] = [
     id: 'medicine-shop',
     title: 'Medicine Shop',
     description: 'Online pharmacy store built for a local business to handle orders and inventory.',
-    imageUrl: 'https://static.vecteezy.com/system/resources/previews/006/226/458/original/shopping-bag-icon-with-hospital-paramedic-medical-logo-medical-store-logo-template-element-vector.jpg',
+    imageUrl: 'https://static.vecteezy.com/system/resources/previews/005/815/640/original/medical-shop-logo-template-this-design-use-stethoscope-symbol-suitable-for-bag-and-health-business-free-vector.jpg',
     imageHint: 'online pharmacy store',
     liveUrl: 'https://drpharmax.com/',
   },
@@ -85,7 +85,7 @@ const collegeProjectsData: Project[] = [
     id: 'book-store',
     title: 'Book Store',
     description: 'A platform where students can buy and sell second-hand books across the college.',
-    imageUrl: 'https://static.vecteezy.com/system/resources/previews/000/396/787/original/bookstore-and-papers-logo-vector.jpg',
+    imageUrl: 'https://static.vecteezy.com/system/resources/previews/008/147/482/non_2x/modern-bookstore-logo-design-illustration-vector.jpg',
     imageHint: 'online book marketplace',
   },
 ];
@@ -214,3 +214,4 @@ const ProjectsSection: React.FC = () => {
 };
 
 export default ProjectsSection;
+
