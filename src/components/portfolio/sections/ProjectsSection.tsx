@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Layers, Github, ExternalLink, Wand2 } from 'lucide-react';
+import { Layers, Github, ExternalLink, Wand2, Briefcase, School } from 'lucide-react'; // Added Briefcase and School
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +23,6 @@ interface Project {
   description: string;
   imageUrl: string;
   imageHint: string; // For AI image search suggestions
-  stack?: string[]; // Optional: tech stack
   liveUrl?: string;
   repoUrl?: string;
 }
@@ -35,7 +34,6 @@ const normalProjectsData: Project[] = [
     description: 'A clone of Instagram with basic post, profile, and like functionalities. Built with MERN stack.',
     imageUrl: 'https://tse1.mm.bing.net/th?id=OIP.IKf-GFq3uinuSwQPqNng2wHaFn&pid=Api&P=0&h=180',
     imageHint: 'social media app',
-    stack: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     repoUrl: 'https://github.com/Ritik07thakur/Instagram-Clone-MERN-Stack',
   },
   {
@@ -44,7 +42,6 @@ const normalProjectsData: Project[] = [
     description: 'A simple CRUD note-taking app with real-time editing capabilities using MERN Stack.',
     imageUrl: 'https://tse3.mm.bing.net/th?id=OIP.79e4m3FlswRWQKYSuJSzeQHaHa&pid=Api&P=0&h=180',
     imageHint: 'notes productivity app',
-    stack: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     repoUrl: 'https://github.com/Ritik07thakur/Note-App-Using-MERN-Stack-',
   },
   {
@@ -53,7 +50,6 @@ const normalProjectsData: Project[] = [
     description: 'Full-stack blog platform with user login, post creation, and a commenting system.',
     imageUrl: 'https://tse3.mm.bing.net/th?id=OIP.G4d1nKfnlw8k-z2BPjNbagHaHa&pid=Api&P=0&h=180',
     imageHint: 'blog writing platform',
-    stack: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     repoUrl: 'https://github.com/Ritik07thakur/Full-Stack-Blog-app-main',
   },
 ];
@@ -65,7 +61,6 @@ const freelancingProjectsData: Project[] = [
     description: 'A tour management site for local adventures and tent bookings in Churdhar.',
     imageUrl: 'https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Travel-logo-design-Graphics-9786083-1-1-580x435.jpg',
     imageHint: 'travel booking website',
-    stack: ['Next.js', 'React', 'Tailwind CSS'],
     liveUrl: 'https://churdhar.vercel.app/',
   },
   {
@@ -74,7 +69,6 @@ const freelancingProjectsData: Project[] = [
     description: 'Online pharmacy store built for a local business to handle orders and inventory.',
     imageUrl: 'https://static.vecteezy.com/system/resources/previews/006/226/458/original/shopping-bag-icon-with-hospital-paramedic-medical-logo-medical-store-logo-template-element-vector.jpg',
     imageHint: 'online pharmacy store',
-    stack: ['React', 'Node.js', 'Express', 'MongoDB'],
     liveUrl: 'https://drpharmax.com/',
   },
 ];
@@ -86,7 +80,6 @@ const collegeProjectsData: Project[] = [
     description: 'Manages student admissions, complaints, and room allocations within a hostel environment.',
     imageUrl: 'https://dcassetcdn.com/design_img/2239944/517402/517402_11781462_2239944_9a6c7c25_image.jpg',
     imageHint: 'management system dashboard',
-    stack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
   },
   {
     id: 'book-store',
@@ -94,7 +87,6 @@ const collegeProjectsData: Project[] = [
     description: 'A platform where students can buy and sell second-hand books across the college.',
     imageUrl: 'https://static.vecteezy.com/system/resources/previews/000/396/787/original/bookstore-and-papers-logo-vector.jpg',
     imageHint: 'online book marketplace',
-    stack: ['Java', 'Spring Boot', 'MySQL'],
   },
 ];
 
@@ -114,13 +106,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
     </CardHeader>
     <CardContent className="p-4 md:p-6 flex-grow">
       <CardTitle className="text-xl md:text-2xl text-foreground mb-2">{project.title}</CardTitle>
-      {project.stack && project.stack.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-3">
-          {project.stack.map(tech => (
-            <span key={tech} className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">{tech}</span>
-          ))}
-        </div>
-      )}
       <CardDescription className="text-sm md:text-base text-muted-foreground">{project.description}</CardDescription>
     </CardContent>
     <CardFooter className="p-4 md:p-6 pt-0 mt-auto">
@@ -215,34 +200,17 @@ const ProjectsSection: React.FC = () => {
       <ProjectCategorySlider 
         title="Freelancing Projects" 
         projects={freelancingProjectsData}
-        icon={BriefcaseBusinessIcon} // Placeholder, replace with actual Briefcase or similar
+        icon={Briefcase} 
       />
       
       <ProjectCategorySlider 
         title="College Projects" 
         projects={collegeProjectsData}
-        icon={GraduationCapIcon} // Placeholder, replace with actual GraduationCap or similar
+        icon={School} 
       />
 
     </SectionWrapper>
   );
 };
-
-// Placeholder icons, lucide-react might not have these exact names
-// You might need to choose alternatives or import custom SVGs
-const BriefcaseBusinessIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-  </svg>
-);
-
-const GraduationCapIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.084a1 1 0 0 0-.019 1.838l8.591 4.19a2 2 0 0 0 1.66 0l8.591-4.19z"></path>
-    <path d="M3.276 13.922L3 20l9 2 9-2-0.276-6.078"></path>
-  </svg>
-);
-
 
 export default ProjectsSection;
