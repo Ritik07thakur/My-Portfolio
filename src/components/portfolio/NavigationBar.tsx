@@ -83,7 +83,7 @@ const NavigationBar: React.FC = () => {
           <Link href="#home" className="flex items-center space-x-2 text-2xl font-bold text-foreground hover:text-primary transition-colors" onClick={() => closeMenuAndScroll('#home')}>
             <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/50">
               <Image
-                src="https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423743/WhatsApp_Image_2025-05-15_at_21.05.35_cebad3d7_xgsdiz.jpg"
+                src="https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423864/photo_xrtbts.jpg"
                 alt="Ritik Thakur Logo"
                 layout="fill"
                 objectFit="cover"
