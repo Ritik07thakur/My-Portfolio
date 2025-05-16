@@ -3,7 +3,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code2 } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -13,7 +14,7 @@ const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
-  { href: '#practice', label: 'Practice' }, 
+  { href: '#practice', label: 'Practice' },
 ];
 
 const NavigationBar: React.FC = () => {
@@ -68,11 +69,6 @@ const NavigationBar: React.FC = () => {
   const closeMenuAndScroll = (href: string) => {
     setIsOpen(false);
     // Smooth scroll for Next.js Link component is handled by CSS scroll-behavior: smooth
-    // If manual scroll is needed for some reason:
-    // const element = document.querySelector(href);
-    // if (element) {
-    //   element.scrollIntoView({ behavior: 'smooth' });
-    // }
   };
 
   return (
@@ -85,7 +81,16 @@ const NavigationBar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="#home" className="flex items-center space-x-2 text-2xl font-bold text-foreground hover:text-primary transition-colors" onClick={() => closeMenuAndScroll('#home')}>
-            <Code2 size={28} className="text-primary"/>
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/50">
+              <Image
+                src="https://res.cloudinary.com/dewkk3cbk/image/upload/v1747423743/WhatsApp_Image_2025-05-15_at_21.05.35_cebad3d7_xgsdiz.jpg"
+                alt="Ritik Thakur Logo"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+                data-ai-hint="logo person"
+              />
+            </div>
             <span>Ritik Thakur</span>
           </Link>
 
