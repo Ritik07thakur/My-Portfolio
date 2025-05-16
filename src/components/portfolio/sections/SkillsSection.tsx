@@ -127,9 +127,9 @@ const SkillsSection: React.FC = () => {
   }, [api]);
 
   const skillCategories = [
-    { title: "Frontend Skills", skills: frontendSkills, gridCols: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" },
-    { title: "Backend Skills", skills: backendSkills, gridCols: "grid-cols-2 md:grid-cols-4" }, // Fewer items, so 4 cols on md+
-    { title: "Developer Tools", skills: tools, gridCols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" }, // More items, up to 5 cols
+    { title: "Frontend Skills", skills: frontendSkills, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" },
+    { title: "Backend Skills", skills: backendSkills, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4" },
+    { title: "Developer Tools", skills: tools, gridCols: "grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" },
   ];
 
   return (
@@ -155,9 +155,11 @@ const SkillsSection: React.FC = () => {
           <CarouselPrevious className="left-[-10px] sm:left-[-16px] md:left-[-24px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
           <CarouselNext className="right-[-10px] sm:right-[-16px] md:right-[-24px] text-primary border-primary hover:bg-primary hover:text-primary-foreground disabled:border-muted disabled:text-muted-foreground" />
         </Carousel>
-        <div className="py-2 text-center text-sm text-muted-foreground mt-4">
-          Slide {current} of {count}
-        </div>
+        { count > 0 && (
+          <div className="py-2 text-center text-sm text-muted-foreground mt-4">
+            Slide {current} of {count}
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );
