@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowDown, Download, Send } from 'lucide-react';
@@ -30,6 +31,21 @@ const HeroSection: React.FC = () => {
     },
   };
 
+  const fullTitle = "MERN Stack Developer | Freelancer | Quick Learner";
+  const [typedTitle, setTypedTitle] = useState('');
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    if (typedTitle.length < fullTitle.length) {
+      const timeoutId = setTimeout(() => {
+        setTypedTitle(fullTitle.substring(0, typedTitle.length + 1));
+      }, 80); // Adjust typing speed (milliseconds)
+      return () => clearTimeout(timeoutId);
+    } else {
+      setIsTypingComplete(true);
+    }
+  }, [typedTitle, fullTitle]);
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
       <motion.div
@@ -46,9 +62,10 @@ const HeroSection: React.FC = () => {
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-2xl md:text-3xl text-primary"
+          className="text-2xl md:text-3xl text-primary min-h-[2.5rem] md:min-h-[3rem]" // Added min-h for layout stability
         >
-          MERN Stack Developer | Freelancer | Quick Learner
+          {typedTitle}
+          {!isTypingComplete && <span className="animate-blink relative top-[-0.1em]">|</span>}
         </motion.p>
         <motion.p
           variants={itemVariants}
